@@ -63,10 +63,11 @@ else {vid.visibility = "hidden";}
 }
  
 function cp_timesheet_value_save($comment_id) {
-	if ( $_POST[ 'cp_timesheet_hours' ] or $_POST[ 'cp_timesheet_minutes' ] )
+	if ( $_POST[ 'cp_timesheet_hours' ] or $_POST[ 'cp_timesheet_minutes' ] ){
     add_comment_meta( $comment_id, 'cp_timesheet_date', $_POST[ 'cp_timesheet_date' ] );
 	add_comment_meta( $comment_id, 'cp_timesheet_hours', $_POST[ 'cp_timesheet_hours' ] );
 	add_comment_meta( $comment_id, 'cp_timesheet_minutes', $_POST[ 'cp_timesheet_minutes' ] );
+	}
 }
  
  
