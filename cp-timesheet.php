@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: TimeSheet for CasePress
-Version: 1.1
+Version: 1.20130815-01
 Author: CasePress
 Author URI: http://casepress.org/
 */
@@ -49,7 +49,7 @@ else {vid.visibility = "hidden";}
 
 add_action('comment_post', 'cp_timesheet_value_save');
 function cp_timesheet_value_save($comment_id) {
-	$time = $_POST[ 'cp_timesheet_hours' ] + $_POST[ 'cp_timesheet_minutes' ]/60; 
+	$time = $_POST[ 'cp_timesheet_hours' ] + round($_POST[ 'cp_timesheet_minutes' ]/60, 2); 
 	if ( $_POST[ 'cp_timesheet_hours' ] or $_POST[ 'cp_timesheet_minutes' ] ) {
     add_comment_meta( $comment_id, 'cp_timesheet_date', $_POST[ 'cp_timesheet_date' ] );
 	add_comment_meta( $comment_id, 'cp_timesheet', $time);
