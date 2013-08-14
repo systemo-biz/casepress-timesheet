@@ -63,10 +63,10 @@ else {vid.visibility = "hidden";}
 }
  
 function cp_timesheet_value_save($comment_id) {
+	$time = $_POST[ 'cp_timesheet_hours' ].$_POST[ 'cp_timesheet_minutes' ]; 
 	if ( $_POST[ 'cp_timesheet_hours' ] or $_POST[ 'cp_timesheet_minutes' ] ) {
     add_comment_meta( $comment_id, 'cp_timesheet_date', $_POST[ 'cp_timesheet_date' ] );
-	add_comment_meta( $comment_id, 'cp_timesheet_hours', $_POST[ 'cp_timesheet_hours' ] );
-	add_comment_meta( $comment_id, 'cp_timesheet_minutes', $_POST[ 'cp_timesheet_minutes' ] );
+	add_comment_meta( $comment_id, 'cp_timesheet_hours', $time);
 	}
 }
  
@@ -80,10 +80,6 @@ function attach_date_to_comment( $comment_id ) {
  
  
 function attach_value_to_comment( $comment_id ) {
-	
-	
-	
-	
     $cp_timesheet_hours = get_comment_meta( get_comment_ID(), 'cp_timesheet_hours', true );
     $cp_timesheet_minutes = get_comment_meta( get_comment_ID(), 'cp_timesheet_minutes', true );
     if ($cp_timesheet_hours && $cp_timesheet_minutes)
