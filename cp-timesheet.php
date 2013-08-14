@@ -63,7 +63,7 @@ else {vid.visibility = "hidden";}
 }
  
 function cp_timesheet_value_save($comment_id) {
-	if ( $_POST[ 'cp_timesheet_hours' ] or $_POST[ 'cp_timesheet_minutes' ] ){
+	if ( $_POST[ 'cp_timesheet_hours' ] or $_POST[ 'cp_timesheet_minutes' ] ) {
     add_comment_meta( $comment_id, 'cp_timesheet_date', $_POST[ 'cp_timesheet_date' ] );
 	add_comment_meta( $comment_id, 'cp_timesheet_hours', $_POST[ 'cp_timesheet_hours' ] );
 	add_comment_meta( $comment_id, 'cp_timesheet_minutes', $_POST[ 'cp_timesheet_minutes' ] );
@@ -89,7 +89,9 @@ function attach_value_to_comment( $comment_id ) {
     if ($cp_timesheet_hours && $cp_timesheet_minutes)
                         $comment_id .= round((($cp_timesheet_hours * 60 + $cp_timesheet_minutes)/60) ,2) ." часа</p></small>";
         elseif ($cp_timesheet_hours && !$cp_timesheet_minutes) {
-                        if((($cp_timesheet_hours % 10)==2) or (($cp_timesheet_hours % 10)==3) or (($cp_timesheet_hours % 10)==4))
+                        if(($cp_timesheet_hours % 10==2 && $cp_timesheet_hours>10) or ($cp_timesheet_hours % 10==3 && $cp_timesheet_hours>10) or ($cp_timesheet_hours % 10==4 && $cp_timesheet_hours>10))
+						$comment_id .= $cp_timesheet_hours."  часов</p></small>"; 
+						elseif(($cp_timesheet_hours % 10==2) or ($cp_timesheet_hours % 10==3) or ($cp_timesheet_hours % 10==4))
                         $comment_id .= $cp_timesheet_hours."  часа</p></small>";    
                         elseif (($cp_timesheet_hours % 10)==1)
                         $comment_id .= $cp_timesheet_hours."  час</p></small>";
