@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: TimeSheet for CasePress
-Version: 1.20130815-01
+Plugin Name: CasePress. Учет времени
+Version: 1.1
 Author: CasePress
 Author URI: http://casepress.org/
 */
@@ -26,21 +26,21 @@ add_action('comment_form', 'cp_timesheet_form');
 function cp_timesheet_form() {
 ?>
 <script type="text/javascript">
-function pokaz(){
-var vid = document.getElementById("descr").style;
-if (vid.visibility =="hidden") {vid.visibility = "visible";}
-else {vid.visibility = "hidden";}
-}
+	function pokaz(){
+	var vid = document.getElementById("descr").style;
+	if (vid.display =="none") {vid.display = "block";}
+	else {vid.display = "none";}
+	}
 </script>
 <div id="cp_timesheet">
 	<p><a href="#" onClick="pokaz(); return false">Трудозатраты</a></p>
-	<div id="descr" style="visibility: hidden">
+	<div id="descr" style="display: none">
 		<p>Введите дату:<br>
-		<input type="date" id="cp_timesheet_date" name="cp_timesheet_date" value="<?php echo date( 'Y-m-d', time() ); ?>"/></p>
+		<input type="date" id="cp_timesheet_date" name="cp_timesheet_date" size="30" value="<?php echo date( 'Y-m-d', time() ); ?>"/></p>
 		<p>Введите часы:<br>
-		<input type="number" id="cp_timesheet_hours" name="cp_timesheet_hours" min="0" /></p>
+		<input type="number" id="cp_timesheet_hours" name="cp_timesheet_hours" min="0"  size="30" /></p>
 		<p>Введите минуты:<br>
-		<input type="number" id="cp_timesheet_minutes" name="cp_timesheet_minutes" max="60" min="0" /></p>
+		<input type="number" id="cp_timesheet_minutes" name="cp_timesheet_minutes" max="60" min="0"  size="30" /></p>
 	</div>
 </div>
  
